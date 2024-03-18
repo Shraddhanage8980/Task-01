@@ -1,0 +1,13 @@
+.form-control {
+    display: block;
+    width: 50%;
+}
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    justify-content: flex-end;
+}
+input.inputBox {
+    width: 50px;
+    text-align: center;
+}

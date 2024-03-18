@@ -1,0 +1,86 @@
+<section class="h-100 gradient-custom">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-6" >
+        <div class="card" >
+          <div class="card-header py-3">
+            <h5 class="mb-0">Added Product List</h5>
+          </div>
+          <div class="card-body" *ngIf="allProduArr.length" >
+            
+            <div class="row border mb-3" *ngFor="let products of allProduArr ; let  i = index">
+              <div class="col-lg-3 col-md-12 mb- mb-lg-0">
+                <div class="bg-image hover-overlay hover-zoom ripple rounded mt-2 mb-2" data-mdb-ripple-color="light">
+                  <img [src]="products.productImg"
+                    class="w-100" />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-5 col-md-3 mb-4 mt-4 mb-lg-0">
+                <p><strong>{{products.productName}}</strong></p>
+                  
+                <p class="text-start">
+                  <strong>{{products.productPrice | currency:'INR'}}</strong>
+                </p>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-lg-0">
+ 
+                <button class="btn btn-primary px-3" type="button"
+                (click)="decrement(products)">
+               -
+                </button>
+
+
+                <div class="form-outline">
+                  <input id="form1" min="1" name="quantity" [(ngModel)]="products.productQuantity" value="0" type="text" class="form-control mx-2"/>
+                </div>
+
+                <button class="btn btn-primary px-3 ms-2"
+                  (click)="increment(products)">
+                  +
+                </button>
+              </div>
+                <button type="button" class="btn btn-success btn-md mt-1 me-1 mb-2" [disabled]="products.productQuantity == 0" data-mdb-toggle="tooltip" (click)="onClick(products)">
+                  Add To Bag
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">My Shopping Bag</h5>
+          </div>
+            <table class="table table-bordered"  *ngIf="listArr.length">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price Details</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let list of listArr">
+                    <td>{{ list.productName }}</td>
+                    <td>{{ list.productQuantity }}</td>
+                    <td>{{ list.productPrice | currency:'INR'}}</td>
+                    <td>{{ list.productQuantity * list.productPrice | currency:'INR' }}</td>
+                    <td><button class="btn-danger" (click)="onDeleteProducts(list)">Delete</button></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="order-total text-right">Order Total:</td>
+                    <td>{{totalPrice | currency:'INR'}}</td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</section>

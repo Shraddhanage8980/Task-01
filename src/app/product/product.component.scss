@@ -1,0 +1,25 @@
+.form-control {
+    display: block;
+    width: 76%;
+}
+.d-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    justify-content: flex-end;
+}
+input.inputBox {
+    width: 60px;
+    text-align: center;
+    margin-left: 7px;
+}
+.col-lg-4.col-md-6.mb-lg-0 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 65px;
+    align-items: baseline;
+}
+button.btn.btn-success.btn-md.mt-1.me-1.mb-2 {
+    margin-left: 385px;
+}
